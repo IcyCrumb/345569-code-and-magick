@@ -29,8 +29,8 @@ function setShadowParameters(ctx, newParameters) {
 	ctx.shadowBlur = newParameters.shadowBlur;
 }
 
-var gistoHeight = [];
-function fillTextInformation(ctx, times, names) {
+//var gistoHeight = [];
+function fillTextInformation(ctx, times, names, gistoHeight) {
   ctx.font = '16px PT Mono';
   ctx.fillStyle = 'black';
   ctx.fillText('Ееее победа !', 140, 30);
@@ -38,7 +38,7 @@ function fillTextInformation(ctx, times, names) {
 
 //  var gistoHeight = [];
   for (var j = 0; j < times.length; j++) {
-      gistoHeight[j] = (150*times[j])/getMax(times);
+      //gistoHeight[j] = (150*times[j])/getMax(times);
       ctx.fillText(parseInt(times[j]), 150 + 90*j, 220 - gistoHeight[j]);
       ctx.fillText(names[j], 150 + 90*j, 260);
   }
@@ -83,7 +83,11 @@ function renderStatistics(ctx, names, times) {
     gistoHeight[j] = (150*times[j])/getMax(times);
 }
 */
-fillTextInformation(ctx, times, names);
+var gistoHeight = [];
+  for (var j = 0; j < times.length; j++) {
+    gistoHeight[j] = (150*times[j])/getMax(times);
+}
+fillTextInformation(ctx, times, names, gistoHeight);
 
 /*
 var max = -1;
@@ -98,11 +102,16 @@ for (var i = 0; i < times.length; i++) {
 var gistoHeight = [];
   for (var j = 0; j < times.length; j++) {
     gistoHeight[j] = (150*times[j])/getMax(times);
+}
+*/
+
+    /*
     ctx.fillText(parseInt(times[j]), 150 + 90*j, 220 - gistoHeight[j]);
     ctx.fillText(names[j], 150 + 90*j, 260);
 
 }
 */
+
 
 for (var j = 0; j < times.length; j++) {
   if (names[j] == 'Вы') {
