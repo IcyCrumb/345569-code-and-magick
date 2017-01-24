@@ -44,6 +44,19 @@ function fillTextInformation(ctx, times, names, gistoHeight) {
   }
 }
 
+function drawGistogram(ctx, times, names, gistoHeight) {
+  for (var j = 0; j < times.length; j++) {
+    if (names[j] == 'Вы') {
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+    }
+    else {
+      ctx.fillStyle = getRandomColor();
+    }
+    ctx.fillRect(150 + 90*j , 230 - gistoHeight[j], 40, gistoHeight[j]);
+  }
+}
+
+
 function renderStatistics(ctx, names, times) {
 
   var oldShadowParameters = {offsetX : ctx.shadowOffsetX,
@@ -88,7 +101,8 @@ var gistoHeight = [];
     gistoHeight[j] = (150*times[j])/getMax(times);
 }
 fillTextInformation(ctx, times, names, gistoHeight);
-
+drawGistogram(ctx, times, names, gistoHeight);
+}
 /*
 var max = -1;
 for (var i = 0; i < times.length; i++) {
@@ -112,7 +126,7 @@ var gistoHeight = [];
 }
 */
 
-
+/*
 for (var j = 0; j < times.length; j++) {
   if (names[j] == 'Вы') {
     ctx.fillStyle = 'rgba(255, 0, 0, 1)';
@@ -123,3 +137,4 @@ for (var j = 0; j < times.length; j++) {
   ctx.fillRect(150 + 90*j , 230 - gistoHeight[j], 40, gistoHeight[j]);
   }
 }
+*/
