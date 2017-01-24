@@ -1,4 +1,12 @@
-'use strict';
+'use strict'; //нужно эту директиву также завершать точкой с запятой
+
+function textInfa(ctx) {
+  ctx.font = '16px PT Mono';
+  ctx.fillStyle = 'black';
+  ctx.fillText('Ееее победа !', 150, 30); //подвинул текст правее
+  ctx.fillText('Список результатов:', 150, 50);
+}
+
 
 function randomInteger(min, max) {
   var rand = min - 0.5 + Math.random()*(max - min + 1);
@@ -21,37 +29,39 @@ function setShadowParameters(ctx, newParameters) {
 
 function renderStatistics(ctx, names, times) {
 
-  var oldShadowParameters = {offsetX : ctx.shadowOffsetX,
-  					   	             offsetY : ctx.shadowOffsetY,
-  						               shadowBlur : ctx.shadowBlur};
+var oldShadowParameters = {offsetX : ctx.shadowOffsetX,
+					   	   offsetY : ctx.shadowOffsetY,
+						   shadowBlur : ctx.shadowBlur};
 
-  setShadowParameters(ctx, {offsetX : 10,
-  						              offsetY : 10,
-  						              shadowBlur : 2});
+setShadowParameters(ctx, {offsetX : 10,
+						  offsetY : 10,
+						  shadowBlur : 2});
 
-  ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
+ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
 
-  ctx.beginPath();
-  ctx.moveTo(100, 10);
-  ctx.lineTo(310, 0);
-  ctx.lineTo(520, 10);
-  ctx.lineTo(530, 145);
-  ctx.lineTo(520, 280);
-  ctx.lineTo(310, 290);
-  ctx.lineTo(100, 280);
-  ctx.lineTo(90, 145);
-  ctx.lineTo(100, 10);
-  ctx.fillStyle = 'white';
-  ctx.fill();
 
-  setShadowParameters(ctx, oldShadowParameters);
+ctx.beginPath();
+ctx.moveTo(100, 10);
+ctx.lineTo(310, 0);
+ctx.lineTo(520, 10);
+ctx.lineTo(530, 145);
+ctx.lineTo(520, 280);
+ctx.lineTo(310, 290);
+ctx.lineTo(100, 280);
+ctx.lineTo(90, 145);
+ctx.lineTo(100, 10);
+ctx.fillStyle = 'white';
+ctx.fill();
 
-  ctx.shadowColor = 'white';
-  ctx.font = '16px PT Mono';
-  ctx.fillStyle = 'black';
-  ctx.fillText('Ееее победа !', 140, 30);
-  ctx.fillText('Список результатов:', 110, 50);
+setShadowParameters(ctx, oldShadowParameters);
 
+//ctx.font = '16px PT Mono';
+//ctx.fillStyle = 'black';
+/*ctx.fillText('Ееее победа !', 150, 30); //подвинул текст правее
+ctx.fillText('Список результатов:', 150, 50);
+*/
+
+ textInfa(ctx);
 var max = -1;
 for (var i = 0; i < times.length; i++) {
   if (times[i] > max) {
@@ -60,9 +70,9 @@ for (var i = 0; i < times.length; i++) {
 }
 
 var gistoHeight = [];
-  for (var j = 0; j < times.length; j++) {
-    gistoHeight[j] = (150*times[j])/max;
-    ctx.fillText(parseInt(times[j]), 150 + 90*j, 220 - gistoHeight[j]);
+for (var j = 0; j < times.length; j++) {
+	gistoHeight[j] = (150*times[j])/max;
+    ctx.fillText(Math.round(times[j]), 150 + 90*j, 220 - gistoHeight[j]);   //добавил math.round
     ctx.fillText(names[j], 150 + 90*j, 260);
 
 }
