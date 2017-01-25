@@ -1,7 +1,7 @@
 'use strict';
 
 function getMax(times) {
-  var max = -1;
+  var max = times[0];
   for (var i = 0; i < times.length; i++) {
     if (times[i] > max) {
       max = times[i];
@@ -17,10 +17,11 @@ function randomInteger(min, max) {
 }
 
 function getRandomColor() {
-  var r = randomInteger(0, 255);
-  var g = randomInteger(0, 255);
+  var r = 0;
+  var g = 0;
   var b = randomInteger(0, 255);
-  return 'rgba('+r+', '+g+', '+b+', 1)';
+  var a = Math.random();
+  return 'rgba('+r+', '+g+', '+b+', '+a+')';
 }
 
 function setShadowParameters(ctx, newParameters) {
@@ -58,7 +59,7 @@ function fillTextInformation(ctx, times, names, gistoHeight) {
 
 function drawGistogram(ctx, times, names, gistoHeight) {
   for (var j = 0; j < times.length; j++) {
-    if (names[j] == 'Вы') {
+    if (names[j] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     }
     else {
