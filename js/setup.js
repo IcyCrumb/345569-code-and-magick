@@ -29,3 +29,10 @@ seekWizardEyes.addEventListener("click", function() {
   var rand = Math.floor(Math.random()*eyesColor.length);
   seekWizardEyes.style.fill = eyesColor[rand];
 });
+
+var seekWizardFireball = document.querySelector(".setup-fireball-wrap");
+seekWizardFireball.addEventListener("click", function() {
+  var fireballColor = ["#ee4830", "#30a8ee", "#5ce6c0", "#e848d5", "#e6e848"];
+  var rand = Math.floor(Math.random()*fireballColor.length);
+  seekWizardFireball.style.backgroundColor = fireballColor[rand];
+});
